@@ -15,9 +15,8 @@ export default function Home() {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <main className={`${styles.main} ${inter.className}`}>
-        <p>sadsa</p>
-        <Button variant='outlined'>Outlined</Button>
+      <main>
+        <Button variant='outlined'>Welcome in my documentation</Button>
       </main>
     </>
   );
