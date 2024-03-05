@@ -1,0 +1,17 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.label {
+  text-indent: 6px;
+  word-wrap: break-word;
+}
+
+/* color: red;  // TODO: correct color */
+.error {
+  min-height: 16px;
+  text-align: center;
+  word-wrap: break-word;
+}

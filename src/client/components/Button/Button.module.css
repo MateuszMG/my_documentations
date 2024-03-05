@@ -1,0 +1,29 @@
+/* TODO: correct */
+.button {
+  background-color: transparent;
+  border-radius: 4px;
+  border: #30dafb;
+  color: #ddd;
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin: 6px 12px;
+  outline: none;
+  overflow: hidden;
+  padding: 8px 24px;
+  position: relative;
+}
+
+.button:before {
+  content: '';
+  height: 100%;
+  left: -100%;
+  position: absolute;
+  top: 0;
+  transition: all 400ms;
+  width: 100%;
+}
+
+.button:hover:before {
+  left: 100%;
+}

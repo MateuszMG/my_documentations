@@ -1,0 +1,48 @@
+/* import ReactQuill from 'react-quill';
+import styled, { css } from 'styled-components';
+
+export const Wysiwyg = styled(ReactQuill)(
+  ({ theme: { backgrounds, borders, colors } }) => css`
+    .ql-toolbar,
+    .ql-container {
+      border: ${borders.primary} !important;
+    }
+
+    & *[role='button'] {
+      border: none !important;
+      color: ${colors.textPrimary} !important;
+    }
+
+    * {
+      stroke: ${colors.textPrimary} !important;
+    }
+
+    .ql-picker-options {
+      background-color: ${backgrounds.tertiary} !important;
+      border: ${borders.primary}; !important;
+      padding: 0 !important;
+    }
+
+    .ql-tooltip {
+      background-color: ${backgrounds.secondary} !important;
+      border: ${borders.primary}; !important;
+      color: ${colors.textPrimary} !important;
+    }
+
+    .ql-tooltip a:not(.ql-preview) {
+      color: ${colors.textPrimary} !important;
+    }
+
+    .ql-picker-item {
+      border-bottom: ${borders.primary} !important;
+    }
+
+    .ql-picker-item:hover {
+      background-color: ${colors.primary} !important;
+    }
+
+    .ql-editor {
+      padding: 16px !important;
+    }
+  `,
+); */
