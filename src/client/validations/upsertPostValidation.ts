@@ -5,6 +5,9 @@ import { generalYupValidations } from './generalValidations';
 
 const upsertPostValidation = Yup.object({
   post: generalYupValidations.translation,
+  mainTitle: generalYupValidations.mainTitle,
+  subtitle: generalYupValidations.subitle,
+  category: generalYupValidations.category,
 });
 export const upsertPostResolver = yupResolver(upsertPostValidation);
 export type UpsertPostSchema = Yup.InferType<typeof upsertPostValidation>;

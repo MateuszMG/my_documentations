@@ -15,25 +15,25 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 
 export const getStaticProps = (async (context: GetStaticPropsContext) => {
-  console.log(';getStaticProps context', context);
-
   const category = (context.params?.category ||
     'typescript') as AvailableCategories;
 
   const titles = await postApi.getTitles(category);
   const groupedTitles = groupTitles(titles);
 
-  return { props: { titles: groupedTitles } };
-}) satisfies GetStaticProps<{ titles: GroupedTitles }>;
+  return { props: { category, titles: groupedTitles } };
+}) satisfies GetStaticProps<PageProps>;
 
-// export default function Page({ titles }: { titles: GroupedTitles }) {
-export default function Page({ titles, ...props }: any) {
-  console.log('props', props);
+interface PageProps {
+  category: AvailableCategories;
+  titles: GroupedTitles;
+}
 
+export default function Page({ category, titles }: PageProps) {
   return (
     <div className={styles.page}>
       <ChaptersNav
-        path='typescriptDoc'
+        path={category}
         chapters={Object.entries(titles).map(([mainTitle, subtitles]: any) => ({
           mainTitle,
           subtitles: subtitles.map(({ _id, subtitle }: any) => ({
@@ -42,13 +42,6 @@ export default function Page({ titles, ...props }: any) {
           })),
         }))}
       />
-      <div className={styles.content}>
-        <p>ts</p>
-        <p>ts</p>
-        <p>ts</p>
-        <p>ts</p>
-        <p>ts</p>
-      </div>
     </div>
   );
 }

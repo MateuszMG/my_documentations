@@ -16,6 +16,7 @@
     "@emotion/server": "^11.11.0",
     "@emotion/styled": "^11.11.0",
     "@hookform/resolvers": "^3.3.4",
+    "@mui/lab": "^5.0.0-alpha.167",
     "@mui/material-nextjs": "^5.15.11",
     "@uiw/react-codemirror": "^4.21.24",
     "axios": "^1.6.7",

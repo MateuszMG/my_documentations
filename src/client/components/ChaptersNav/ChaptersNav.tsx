@@ -1,4 +1,4 @@
-import { paths } from '@/client/utils/paths';
+import { docsPaths } from '@/client/utils/paths';
 import Link from 'next/link';
 
 interface Subtitle {
@@ -12,7 +12,7 @@ interface Chapter {
 }
 
 interface ChaptersNavProps {
-  path: keyof typeof paths;
+  path: AvailableCategories;
   chapters: Chapter[];
 }
 
@@ -26,7 +26,7 @@ export const ChaptersNav = ({ chapters, path }: ChaptersNavProps) => {
             <ul>
               {subtitles.map((subtitle) => (
                 <li key={subtitle._id}>
-                  <Link href={`${paths[path]}/${subtitle.subtitle}`}>
+                  <Link href={`${docsPaths[path]}/${subtitle.subtitle}`}>
                     {subtitle.subtitle}
                   </Link>
                 </li>

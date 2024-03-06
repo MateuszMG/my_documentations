@@ -10,9 +10,11 @@ export const CodeMirror = ({ onChange, value }: CodeMirrorProps) => {
   return (
     <ReactCodeMirror
       extensions={[javascript({ jsx: true, typescript: true })]}
+      minHeight='40px'
       onChange={onChange}
       theme='dark'
       value={value.replace(/    /g, '  ')}
+      width='100%'
     />
   );
 };

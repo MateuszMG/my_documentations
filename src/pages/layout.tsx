@@ -1,14 +1,23 @@
-import { paths } from '@/client/utils/paths';
+import { firstLetterToUpperCase } from '@/client/helpers/strings';
+import { docsPaths, paths } from '@/client/utils/paths';
 import Link from 'next/link';
 
 const TopNav = () => (
   <nav>
-    <ul>
+    <ul
+      style={{
+        display: 'flex',
+        gap: '16px',
+      }}
+    >
       <Link href={paths.home}>Home</Link>
       <Link href={paths.profile}>profile</Link>
-      <Link href={paths.javascriptDoc}>Javascript</Link>
-      <Link href={paths.typescriptDoc}>Typescript</Link>
-      <Link href={paths.graphqlDoc}>graphql</Link>
+
+      {Object.entries(docsPaths).map(([key, path]) => (
+        <Link key={key} href={path}>
+          {firstLetterToUpperCase(key)}
+        </Link>
+      ))}
     </ul>
   </nav>
 );

@@ -1,5 +1,5 @@
 import { postApi } from '@/api/postApi';
-import { ChaptersNav } from '@/client/components/ChaptersNav/ChaptersNav';
+import { parsePost } from '@/client/helpers/parsePost';
 
 import {
   GetStaticPaths,
@@ -21,8 +21,6 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 
 export const getStaticProps = (async (context: GetStaticPropsContext) => {
-  console.log(';context', context);
-
   const subtitle = (context.params?.subtitle || '') as string;
   const post = await postApi.getOne(subtitle);
 
@@ -33,37 +31,19 @@ export const getStaticProps = (async (context: GetStaticPropsContext) => {
 
 export default function Page({
   post,
-  ...props
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  console.log('v props -- ', props);
-
   // TODO: add error
+
+  if (!post) return null;
 
   return (
     <div className={styles.page}>
-      <ChaptersNav
-        path='typescriptDoc'
-        chapters={
-          [
-            // {
-            //   mainTitle: 'first',
-            //   subtitles: ['1', '2', '3'],
-            // },
-            // {
-            //   title: 'sec',
-            //   topics: ['4', '5', '6'],
-            // },
-          ]
-        }
-      />
       <div className={styles.content}>
-        <p>subtitle:{post?.subtitle}</p>
+        <h1>{post.mainTitle}</h1>
+        <h2>:{post.subtitle}</h2>
+        <p>{post.category}</p>
 
-        <code>
-          <div>asd</div>
-        </code>
-
-        <div style={{ border: '2px solid red' }}></div>
+        <div>{parsePost(post.content)}</div>
       </div>
     </div>
   );

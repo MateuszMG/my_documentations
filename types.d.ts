@@ -16,3 +16,8 @@ type SubtitlePath = Pick<Post, 'subtitle' | 'category'>;
 
 type Title = Pick<Post, '_id' | 'mainTitle' | 'subtitle'>;
 type GroupedTitles = { [mainTitle: string]: Title[] }[];
+
+interface Option {
+  label: string;
+  value: string;
+}

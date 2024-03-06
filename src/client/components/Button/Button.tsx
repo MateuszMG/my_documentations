@@ -1,12 +1,10 @@
-import { ButtonHTMLAttributes, forwardRef, ReactNode } from 'react';
-import styles from './Button.module.css';
+import LoadingButton, { LoadingButtonProps } from '@mui/lab/LoadingButton';
+import { forwardRef, ReactNode } from 'react';
 
-import { Loader } from '../Loader/Loader';
-
-interface GlobalButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface GlobalButtonProps extends LoadingButtonProps {
   children: string | ReactNode;
   isError?: boolean;
-  isLoading?: boolean;
+  loading?: boolean;
   testId?: string;
 }
 
@@ -16,24 +14,25 @@ export const Button = forwardRef<HTMLButtonElement, GlobalButtonProps>(
       children,
       disabled,
       isError,
-      isLoading,
+      loading,
       testId,
       ...rest
     }: GlobalButtonProps,
     ref,
   ) => {
-    const isDisabled = disabled || isLoading || isError;
+    const isDisabled = disabled || loading || isError;
 
     return (
-      <button
-        className={styles.button}
+      <LoadingButton
         data-testid={`button__${testId}`}
         disabled={isDisabled}
-        {...rest}
+        loading={loading}
         ref={ref}
+        variant='outlined'
+        {...rest}
       >
-        {isLoading ? <Loader /> : children}
-      </button>
+        {children}
+      </LoadingButton>
     );
   },
 );
