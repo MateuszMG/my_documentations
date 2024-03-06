@@ -41,18 +41,17 @@ export const postController = {
 
   create: async (req: NextApiRequest, res: NextApiResponse) => {
     try {
-      console.log('create');
-      const { category, content, mainTitle, subtitle } =
+      const { category, post, mainTitle, subtitle } =
         await upsertPostValidation.validate(req.body);
 
-      const post = await new PostModel({
+      const newPst = await new PostModel({
         category,
-        content,
+        post,
         mainTitle,
         subtitle,
       }).save();
 
-      res.status(201).json(post);
+      res.status(201).json(newPst);
     } catch (error) {
       console.log('error', error);
 
@@ -62,25 +61,24 @@ export const postController = {
 
   update: async (req: NextApiRequest, res: NextApiResponse) => {
     try {
-      const { category, content, mainTitle, subtitle } =
+      const { category, post, mainTitle, subtitle } =
         await upsertPostValidation.validate(req.body);
-      console.log('res query', req.query);
+
       const { _id } = await idValidation.validate(req.query);
 
-      const post = await PostModel.findByIdAndUpdate(
+      const editedPost = await PostModel.findByIdAndUpdate(
         _id,
-        { category, content, mainTitle, subtitle },
+        { category, post, mainTitle, subtitle },
         { new: true },
       );
 
-      res.status(200).json(post);
+      res.status(200).json(editedPost);
     } catch (error) {
       res.status(500).json({ error });
     }
   },
 
   delete: async (req: NextApiRequest, res: NextApiResponse) => {
-    console.log('res query', req.query);
     const { _id } = await idValidation.validate(req.query);
 
     try {

@@ -41,7 +41,9 @@ export const SelectInput = ({
           <InputLabel id={labelText}>{labelText}</InputLabel>
           <Select labelId={labelText} {...props} {...field} label={labelText}>
             {options.map(({ label, value }) => (
-              <MenuItem value={value}>{label}</MenuItem>
+              <MenuItem key={value} value={value}>
+                {label}
+              </MenuItem>
             ))}
           </Select>
           <FormHelperText error>{helperText}</FormHelperText>

@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 
 export const generalYupValidations = {
-  translation: Yup.string()
+  post: Yup.string()
     .required('Translation is required.')
     .default('')
     .max(10000, 'Translation cannot exceed 10000 characters.')
@@ -10,16 +10,23 @@ export const generalYupValidations = {
 
   mainTitle: Yup.string()
     .required('Main title is required.')
+    .default('')
+    .trim()
+    .strict(true)
     .max(50, 'Main title cannot exceed 50 characters.')
     .label('Main title'),
 
   subitle: Yup.string()
     .required('Subitle is required.')
+    .default('')
+    .trim()
+    .strict(true)
     .max(50, 'Subitle cannot exceed 50 characters.')
     .label('Subitle'),
 
   category: Yup.string()
     .required('Category is required.')
+    .default('')
     .max(50, 'Category cannot exceed 50 characters.')
     .label('Category'),
 };

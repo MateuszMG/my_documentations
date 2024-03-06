@@ -4,7 +4,7 @@ type Post = {
   _id: string;
 
   category: string;
-  content: string;
+  post: string;
   mainTitle: string;
   subtitle: string;
 

@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 import { generalYupValidations } from './generalValidations';
 
 const upsertPostValidation = Yup.object({
-  post: generalYupValidations.translation,
+  post: generalYupValidations.post,
   mainTitle: generalYupValidations.mainTitle,
   subtitle: generalYupValidations.subitle,
   category: generalYupValidations.category,

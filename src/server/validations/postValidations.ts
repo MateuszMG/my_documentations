@@ -4,9 +4,9 @@ import { generalYupValidations } from './generalYupValidations';
 
 export const upsertPostValidation = Yup.object({
   category: generalYupValidations.category,
-  content: generalYupValidations.post,
-  mainTitle: generalYupValidations.title,
-  subtitle: generalYupValidations.title,
+  mainTitle: generalYupValidations.mainTitle,
+  post: generalYupValidations.post,
+  subtitle: generalYupValidations.subitle,
 });
 
 export const categoriesValidation = {

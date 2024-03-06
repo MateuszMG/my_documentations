@@ -17,7 +17,7 @@ export const getStaticPaths = (async () => {
     params: { category, subtitle },
   }));
 
-  return { paths, fallback: false };
+  return { paths, fallback: true };
 }) satisfies GetStaticPaths;
 
 export const getStaticProps = (async (context: GetStaticPropsContext) => {
@@ -40,10 +40,10 @@ export default function Page({
     <div className={styles.page}>
       <div className={styles.content}>
         <h1>{post.mainTitle}</h1>
-        <h2>:{post.subtitle}</h2>
+        <h2>{post.subtitle}</h2>
         <p>{post.category}</p>
 
-        <div>{parsePost(post.content)}</div>
+        <div>{parsePost(post.post)}</div>
       </div>
     </div>
   );

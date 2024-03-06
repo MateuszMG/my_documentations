@@ -6,7 +6,7 @@ export type Post = {
   _id: string;
 
   category: string;
-  content: string;
+  post: string;
   mainTitle: string;
   subtitle: string;
 
@@ -16,7 +16,7 @@ export type Post = {
 
 export interface PostDocument extends Document {
   category: string;
-  content: string;
+  post: string;
   mainTitle: string;
   subtitle: string;
 }
@@ -28,7 +28,7 @@ const postSchema: Schema<PostDocument> = new Schema(
       maxlength: 50,
       validate: categoriesValidation,
     },
-    content: { ...mongoRequireTrimString, maxlength: 10000 },
+    post: { ...mongoRequireTrimString, maxlength: 10000 },
     mainTitle: { ...mongoRequireTrimString, maxlength: 50 },
     subtitle: { ...mongoRequireTrimString, maxlength: 50, unique: true },
   },

@@ -11,12 +11,21 @@ const mongoId = Yup.string()
   })
   .required();
 
-const title = Yup.string()
-  .required('Title is required.')
-  .max(50, 'Title cannot exceed 50 characters.')
-  .trim('Title cannot contain leading and trailing spaces')
+const mainTitle = Yup.string()
+  .required('Main title is required.')
+  .default('')
+  .trim()
   .strict(true)
-  .label('Title');
+  .max(50, 'Main title cannot exceed 50 characters.')
+  .label('Main title');
+
+const subitle = Yup.string()
+  .required('Subitle is required.')
+  .default('')
+  .trim()
+  .strict(true)
+  .max(50, 'Subitle cannot exceed 50 characters.')
+  .label('Subitle');
 
 const category = Yup.string()
   .required('Category is required')
@@ -59,8 +68,9 @@ const post = Yup.string()
   .label('Post');
 
 export const generalYupValidations = {
-  mongoId,
   category,
+  mainTitle,
+  mongoId,
   post,
-  title,
+  subitle,
 };
