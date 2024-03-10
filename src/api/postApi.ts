@@ -26,9 +26,13 @@ export const postApi = {
   getTitles: async (category: AvailableCategories) => {
     try {
       const res = await axios.get('/posts', { params: { category } });
+      console.log('---- res.data category', res.data);
+
       const titles = res.data as Title[];
       return titles;
     } catch (error) {
+      // console.log('----error', error);
+
       return [];
       // TODO toast
     }

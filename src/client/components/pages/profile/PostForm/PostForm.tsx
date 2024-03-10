@@ -1,6 +1,6 @@
-import { Button } from '@/client/components/Button/Button';
-import { CodeMirror } from '@/client/components/CodeMirror/CodeMirror';
-import { Form } from '@/client/components/Form/Form';
+import { Button } from '@/client/components/global/Button/Button';
+import { CodeMirror } from '@/client/components/global/CodeMirror/CodeMirror';
+import { Form } from '@/client/components/global/Form/Form';
 import { SelectInput } from '@/client/components/inputs/SelectInput/SelectInput';
 import { TextInput } from '@/client/components/inputs/TextInput/TextInput';
 import { Wysiwyg } from '@/client/components/inputs/Wysiwyg/Wysiwyg';

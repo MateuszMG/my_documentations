@@ -21,3 +21,7 @@ interface Option {
   label: string;
   value: string;
 }
+
+type DocsPaths = {
+  [key in AvailableCategories]: string;
+};

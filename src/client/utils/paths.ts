@@ -1,8 +1,4 @@
-import { availableCategories, AvailableCategories } from '@/const';
-
-type DocsPaths = {
-  [key in AvailableCategories]: string;
-};
+import { availableCategories } from '@/const';
 
 export const docsPaths: DocsPaths = Object.assign(
   {},

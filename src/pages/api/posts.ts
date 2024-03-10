@@ -11,6 +11,7 @@ export default async function handler(
 ) {
   const { method, query } = req;
 
+  console.log('method: ', method);
   switch (method) {
     case 'GET':
       if (query?.subtitle) return postController.getOne(req, res);

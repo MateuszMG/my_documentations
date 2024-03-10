@@ -4,7 +4,7 @@ import 'react-quill/dist/quill.snow.css';
 // import ReactQuill from 'react-quill';
 import styles from './Wysiwyg.module.css';
 
-import { InputBox } from '../../InputBox/InputBox';
+import { InputBox } from '../../global/InputBox/InputBox';
 
 import dynamic from 'next/dynamic';
 

@@ -1,5 +1,5 @@
 import parse from 'html-react-parser';
-import { CodeMirror } from '../components/CodeMirror/CodeMirror';
+import { CodeMirror } from '../components/global/CodeMirror/CodeMirror';
 
 type SplitedTextKeys = 'code' | 'text';
 type SplitedTexts = {

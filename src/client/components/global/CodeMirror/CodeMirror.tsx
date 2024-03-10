@@ -14,7 +14,7 @@ export const CodeMirror = ({ onChange, value }: CodeMirrorProps) => {
       onChange={onChange}
       theme='dark'
       value={value.replace(/    /g, '  ')}
-      width='100%'
+      maxWidth='100vw'
     />
   );
 };

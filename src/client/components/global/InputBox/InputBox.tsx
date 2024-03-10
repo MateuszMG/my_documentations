@@ -1,6 +1,9 @@
 import { ReactNode } from 'react';
 
-import { firstLetterToUpperCase, separateString } from '../../helpers/strings';
+import {
+  firstLetterToUpperCase,
+  separateString,
+} from '../../../helpers/strings';
 
 import styles from './InputBox.module.css';
 

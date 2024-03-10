@@ -1,6 +1,6 @@
-import { useProfile } from './useProfile';
+import { useProfile } from '../../client/components/pages/profile/useProfile';
 
-import { PostForm } from './components/PostForm/PostForm';
+import { PostForm } from '../../client/components/pages/profile/PostForm/PostForm';
 
 export default function Page() {
   const { loading, onSubmit } = useProfile();
