@@ -1,4 +1,5 @@
 import { availableCategories } from '@/const';
+import { isProduction } from '../helpers/functions';
 
 export const docsPaths: DocsPaths = Object.assign(
   {},
@@ -8,5 +9,5 @@ export const docsPaths: DocsPaths = Object.assign(
 export const paths = {
   home: '/',
 
-  profile: '/profile',
+  ...(isProduction ? {} : { profile: '/profile' }),
 };

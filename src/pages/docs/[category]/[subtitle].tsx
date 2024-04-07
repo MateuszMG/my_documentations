@@ -9,6 +9,11 @@ import {
 } from 'next';
 
 import styles from './styles.module.css';
+import { isProduction } from '@/client/helpers/functions';
+import { Icon } from '@/client/components/global/Icon/Icon';
+import { useState } from 'react';
+import { PostForm } from '@/client/components/pages/profile/PostForm/PostForm';
+import { UpsertPostSchema } from '@/client/validations/upsertPostValidation';
 
 export const getStaticPaths = (async () => {
   const posts = await postApi.getPaths();
@@ -32,10 +37,14 @@ export const getStaticProps = (async (context: GetStaticPropsContext) => {
 export default function Page({
   post,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const [editPanel, setEditPanel] = useState(false);
   // TODO: add error
 
   if (!post) return null;
   console.log('parsePost(post.post)', parsePost(post.post));
+
+  const handleDelete = (id: string) => postApi.delete(id);
+  const onSubmit = (data: UpsertPostSchema) => postApi.update(post._id, data);
 
   // const formatedPost = parsePost(post.post)
   //   .map((item) => {
@@ -49,16 +58,27 @@ export default function Page({
 
   return (
     <div className={styles.page}>
-      <div className={styles.content}>
-        <h1>{post.mainTitle}</h1>
-        <h2>{post.subtitle}</h2>
-        <p>{post.category}</p>
+      {!isProduction && (
+        <>
+          {/* <Icon icon='delete' onClick={() => handleDelete(post._id)} /> */}
+          <Icon icon='edit' onClick={() => setEditPanel(!editPanel)} />
+        </>
+      )}
 
-        {/* <div dangerouslySetInnerHTML={{ __html: parsePost(post.post) }}></div> */}
-        <div>{parsePost(post.post)}</div>
-        {/* {parsePost(post.post)} */}
-        {/* {formatedPost} */}
-      </div>
+      {editPanel ? (
+        <PostForm loading={false} onSubmit={onSubmit} editingPost={post} />
+      ) : (
+        <div className={styles.content}>
+          <h1>{post.mainTitle}</h1>
+          <h2>{post.subtitle}</h2>
+          <p>{post.category}</p>
+
+          {/* <div dangerouslySetInnerHTML={{ __html: parsePost(post.post) }}></div> */}
+          <div>{parsePost(post.post)}</div>
+          {/* {parsePost(post.post)} */}
+          {/* {formatedPost} */}
+        </div>
+      )}
     </div>
   );
 }

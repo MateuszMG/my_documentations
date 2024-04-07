@@ -9,27 +9,35 @@ import {
   UpsertPostSchema,
 } from '@/client/validations/upsertPostValidation';
 import { availableCategoryOptions } from '@/const';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Box from '@mui/material/Box';
 
 interface PostFormProps {
+  editingPost?: Post;
   loading: boolean;
-  onSubmit: (data: any) => void;
+  onSubmit: (data: UpsertPostSchema) => void;
 }
 
-export const PostForm = ({ loading, onSubmit }: PostFormProps) => {
+export const PostForm = ({ editingPost, loading, onSubmit }: PostFormProps) => {
   const [codeMirrorValue, setCodeMirrorValue] = useState('');
   const {
     control,
     formState: { errors, isValid },
     handleSubmit,
+    reset,
   } = useForm<UpsertPostSchema>({
     resolver: upsertPostResolver,
   });
 
   const copyCode = () =>
     navigator.clipboard.writeText(`..s..\n${codeMirrorValue.trim()}\n..e..`);
+
+  useEffect(() => {
+    if (!editingPost) return;
+    const { category, mainTitle, post, subtitle } = editingPost;
+    reset({ category, mainTitle, post, subtitle });
+  }, [editingPost]);
 
   return (
     <>

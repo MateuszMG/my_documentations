@@ -1,3 +1,4 @@
+import { UpsertPostSchema } from '@/client/validations/upsertPostValidation';
 import { axios } from './axiosInstance';
 
 export const postApi = {
@@ -35,6 +36,30 @@ export const postApi = {
 
       return [];
       // TODO toast
+    }
+  },
+
+  create: async (data: UpsertPostSchema) => {
+    try {
+      return await axios.post('/posts', data);
+    } catch (error) {
+      return [];
+    }
+  },
+
+  update: async (_id: string, data: UpsertPostSchema) => {
+    try {
+      return await axios.put('/posts', data, { params: { _id } });
+    } catch (error) {
+      return [];
+    }
+  },
+
+  delete: async (_id: string) => {
+    try {
+      return await axios.delete('/posts', { params: { _id } });
+    } catch (error) {
+      return [];
     }
   },
 };
