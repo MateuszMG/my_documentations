@@ -3,6 +3,8 @@ export type AvailableCategories =
   | 'typescript'
   | 'graphql'
   | 'terminal'
+  | 'docker'
+  | 'other'
   | 'design patterns';
 
 export const availableCategories: AvailableCategories[] = [
@@ -10,6 +12,8 @@ export const availableCategories: AvailableCategories[] = [
   'javascript',
   'graphql',
   'terminal',
+  'docker',
+  'other',
   'design patterns',
 ];
 
